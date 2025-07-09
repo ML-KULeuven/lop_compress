@@ -19,7 +19,6 @@ src/tree_compress/compress.py
 src/tree_compress/rebuild.py
 experiment/lop_test_file.py
 examples/
-.github/workflows/
 tests/
 .flake8
 ruff.toml
