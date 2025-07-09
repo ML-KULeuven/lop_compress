@@ -1,7 +1,7 @@
 name: Build Wheels (Nuitka)
 
 on:
-  workflow_dispatch:   # <-- This means the workflow runs only when you manually trigger it
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,11 +25,15 @@ jobs:
           pip install nuitka setuptools wheel build
 
       - name: Compile compress.py with Nuitka
-        run: |
-          nuitka3 --module src/tree_compress/compress.py --output-dir=src/tree_compress
-          # Remove original source
-          if [ -f src/tree_compress/compress.py ]; then rm src/tree_compress/compress.py; fi
-          if [ -f src\tree_compress\compress.py ]; then del src\tree_compress\compress.py; fi
+        run: python -m nuitka --module src/tree_compress/compress.py --output-dir=src/tree_compress
+
+      - name: Remove original compress.py (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: rm src/tree_compress/compress.py
+
+      - name: Remove original compress.py (Windows)
+        if: runner.os == 'Windows'
+        run: del src\tree_compress\compress.py
 
       - name: Build wheel
         run: python -m build --wheel
