@@ -10,8 +10,8 @@ It uses the tree representation of [Veritas](https://github.com/laudv/veritas).
 
 From source:
 ```bash
-git clone https://github.com/laudv/tree_compress.git
-cd tree_compress
+git clone https://github.com/ML-KULeuven/lop_compress
+cd lop_compress
 pip install .
 ```
 
