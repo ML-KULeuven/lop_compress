@@ -36,7 +36,23 @@ clf = RandomForestClassifier(
         random_state=2,
         n_estimators=50)
 clf.fit(data.xtrain, data.ytrain)
-at_pruned = tree_compress.compress_topdown(data, at_orig, relerr=0.02, max_rounds=2)
+
+at_orig = veritas.get_addtree(clf, silent=silent)
+
+compr = tree_compress.Compress(
+                            data,
+                            at_orig,
+                            score=balanced_accuracy_score,
+                            isworse=lambda v, ref: ref-v > 0.005,
+                            silent=True
+                        )
+at_pruned = compr.compress(max_rounds=2, timeout=7200)
 ```
 
-See full example [here](./examples/two_moons.ipynb).
+## Experiments
+The code to run the experiments from our ICML paper can be run using the files in `experiment/`.
+
+The different experiments can be run using the commands in the `experiment/settings/` folder. Figures/tables from the paper can be generated using the notebook `experiment/icml.ipynb`.
+
+## Reference
+Devos, L., Martens, T., Oruç, D.C., Meert, W., Blockeel, H., Davis, J.: Compressing tree ensembles through level-wise optimization and pruning. In: Proceedings of the 42nd International Conference on Machine Learning (2025)
