@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import os
 
-os.environ['PRADA_DATA_DIR']='/cw/dtaijupiter/NoCsBack/dtai/timo/prada_data'
+os.environ['PRADA_DATA_DIR']='~/'
 import json
 import random
 import ast
