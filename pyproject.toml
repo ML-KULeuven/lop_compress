@@ -21,7 +21,9 @@ dependencies = [
     "prada @ git+https://github.com/laudv/prada.git@main",
     "tqdm >= 4.67",
     "matplotlib >= 3.10",
-    "numba >= 0.60"
+    "numba >= 0.60",
+    "click",
+    "gurobipy==12.0.1"
 
 ]
 classifiers = [
