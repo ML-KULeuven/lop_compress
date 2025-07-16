@@ -7,6 +7,7 @@ away subtrees by fitting coefficients.
 It uses the tree representation of [Veritas](https://github.com/laudv/veritas).
 
 ## Installation
+Currently, we only provide a linux binary for LOP on python 3.10. Compatibility for MacOS, Windows and more recent Python versions will follow soon.
 
 From source:
 ```bash
@@ -53,6 +54,10 @@ at_pruned = compr.compress(max_rounds=2, timeout=7200)
 The code to run the experiments from our ICML paper can be run using the files in `experiment/`.
 
 The different experiments can be run using the commands in the `experiment/settings/` folder. Figures/tables from the paper can be generated using the notebook `experiment/icml.ipynb`.
+
+Notes: 
+- Running the experiments requires having a working installation of PyTorch on your device (LRL1 requires this)
+- A Gurobi license is required for running the verification experiments. A free academic license can be requested [here](https://www.gurobi.com/academia/academic-program-and-licenses/).
 
 ## Reference
 Devos, L., Martens, T., Oruç, D.C., Meert, W., Blockeel, H., Davis, J.: Compressing tree ensembles through level-wise optimization and pruning. In: Proceedings of the 42nd International Conference on Machine Learning (2025)
